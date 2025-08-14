@@ -134,6 +134,7 @@ const actions = {
     state.socket?.emit('nominate', { text });
   },
   closePoll: (): void => {
+    console.log("Closing the Poll.")
     state.socket?.emit('close_poll');
   },
   startOver: (): void => {

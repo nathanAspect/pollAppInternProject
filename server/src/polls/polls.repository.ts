@@ -27,7 +27,7 @@ export class PollsRepository {
       rankings[r.userID].push(String(r.ranking));
     });
 
-    const results = poll.results.map((r) => r.result);
+    const results = poll.results.flatMap((r) => r.result);
 
     return {
       id: poll.id,

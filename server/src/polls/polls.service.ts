@@ -155,13 +155,26 @@ export class PollsService {
   async computeResults(pollID: string): Promise<Poll> {
     const poll = await this.pollsRepository.getPoll(pollID);
 
+    if (!poll) {
+      this.logger.warn(`Poll ${pollID} not found in computeResults.`);
+      return null;
+    }
+
+    this.logger.debug(`Poll fetched for computeResults: ${JSON.stringify(poll)}`);
+
     const results = getResults(
       poll.rankings,
       poll.nominations,
       poll.votesPerVoter,
     );
 
-    return this.pollsRepository.addResults(pollID, results);
+    this.logger.debug(`Results computed: ${JSON.stringify(results, null, 2)}`);
+
+    const updatedPoll = await this.pollsRepository.addResults(pollID, results);
+
+    this.logger.debug(`Poll after adding results: ${JSON.stringify(updatedPoll)}`);
+
+    return updatedPoll;
   }
 
   async cancelPoll(pollID: string): Promise<void> {
