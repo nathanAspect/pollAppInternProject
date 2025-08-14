@@ -168,7 +168,7 @@ export class PollsRepository {
     try {
       for (const ranking of rankings) {
         await this.prisma.pollRanking.create({
-          data: { pollId: pollID, userID, ranking: Number(ranking) },
+          data: { pollId: pollID, userID, ranking },
         });
       }
       return this.getPoll(pollID);

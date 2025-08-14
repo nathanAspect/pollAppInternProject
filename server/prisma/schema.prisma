@@ -39,7 +39,7 @@ model PollRanking {
   poll    Poll   @relation(fields: [pollId], references: [id], onDelete: Cascade)
   pollId  String
   userID  String
-  ranking Int
+  ranking String
 }
 
 model PollResult {
@@ -48,3 +48,4 @@ model PollResult {
   pollId  String
   result  Json
 }
+
