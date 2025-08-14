@@ -55,7 +55,7 @@ const App: React.FC = () => {
 
   return (
     <>
-      <Loader isLoading={currentState.isLoading} color="orange" width={120} />
+      <Loader isLoading={currentState.isLoading} color="purple" width={120} />
       {currentState.wsErrors.map((error) => (
         <SnackBar
           key={error.id}

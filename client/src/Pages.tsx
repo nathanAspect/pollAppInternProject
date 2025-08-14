@@ -53,7 +53,7 @@ const Pages: React.FC = () => {
           classNames="page"
           unmountOnExit
         >
-          <div className="page mobile-height max-w-screen-sm mx-auto py-8 px-4 overflow-y-auto">
+          <div className="page mobile-height w-screen mx-auto py-[100px] px-[150px] overflow-y-auto bg-[#0B1215]">
             <Component />
           </div>
         </CSSTransition>

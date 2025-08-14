@@ -36,16 +36,16 @@ const CountSelector: React.FC<CountSelectorProps> = ({
     <div className="flex justify-between items-center">
       <button
         type="button"
-        className="btn-round btn-round-orange"
+        className="rounded-full p-[5px] size-[40px] text-white opacity-80 font-bold text-[20px] text-center bg-[#ffffff13] flex justify-center items-center hover:bg-[#ffffff2b] duration-300"
         disabled={current - step < min}
         onClick={() => setCurrent(current - step)}
       >
         -
       </button>
-      <div className="text-2xl font-bold">{current}</div>
+      <div className="text-white opacity-80 font-bold text-[16px]]">{current}</div>
       <button
         type="button"
-        className="btn-round btn-round-orange"
+        className="rounded-full p-[5px] size-[40px] text-white opacity-80 font-bold text-[20px] text-center bg-[#ffffff13] flex justify-center items-center hover:bg-[#ffffff2b] duration-300"
         disabled={current + step > max}
         onClick={() => setCurrent(current + step)}
       >

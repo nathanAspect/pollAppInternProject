@@ -38,69 +38,82 @@ export const WaitingRoom: React.FC = () => {
     actions.initializeSocket();
   }, []);
   return (
-    <>
+    <div className='flex flex-col justify-around items-center h-full mx-auto w-full p-[20px] border border-[#9d8bfb] rounded-[50px]'>
       <div className="flex flex-col w-full justify-between items-center h-full">
         <div>
-          <h2 className="text-center">Poll Topic</h2>
-          <p className="italic text-center mb-4">{currentState.poll?.topic}</p>
-          <h2 className="text-center">Poll ID</h2>
-          <h3 className="text-center mb-2">Click to copy!</h3>
+          <h2 className="text-center font-bold text-white opacity-80 mt-[20px]">Poll Topic</h2>
+
+          <p className="italic text-center text-white opacity-80 mt-[10px] mb-[10px]">{currentState.poll?.topic}</p>
+
+          <h2 className="text-center font-bold text-white opacity-80 mt-[20px]">Poll ID</h2>
+
+          <h3 className="italic text-center text-white opacity-80 mt-[10px] mb-[10px]">Click to copy!</h3>
+
           <div
             onClick={() => copyToClipboard(currentState.poll?.id || '')}
-            className="mb-4 flex justify-center align-middle cursor-pointer"
+            className="mb-4 flex justify-center align-middle cursor-pointer text-white opacity-70 hover:opacity-100 duration-300 mb-[25px]"
           >
             <div className="font-extrabold text-center mr-2">
               {currentState.poll && colorizeText(currentState.poll?.id)}
             </div>
             <MdContentCopy size={24} />
           </div>
+
         </div>
         <div className="flex justify-center">
+
           <button
-            className="box btn-orange mx-2 pulsate"
+            className="rounded-[10px] flex justify-center items-center border border-[#ffffff2b] px-[5px] py-[5px] text-[#BDBEBF] bg-[#ffffff13] hover:bg-[#ffffff2b] trasition-all duration-300 font-bold w-[60px] mr-[15px] mb-[7px]"
             onClick={() => setIsParticipantListOpen(true)}
           >
-            <MdPeopleOutline size={24} />
+            <MdPeopleOutline size={30} />
             <span>{currentState.participantCount}</span>
           </button>
+
           <button
-            className="box btn-purple mx-2 pulsate"
+            className="rounded-[10px] flex justify-center items-center border border-[#ffffff2b] px-[5px] py-[5px] text-[#BDBEBF] bg-[#ffffff13] hover:bg-[#ffffff2b] trasition-all duration-300 font-bold w-[60px] mr-[15px] mb-[7px]"
             onClick={() => setIsNominationFormOpen(true)}
           >
             <BsPencilSquare size={24} />
             <span>{currentState.nominationCount}</span>
           </button>
+
         </div>
-        <div className="flex flex-col justify-center">
+
+        {currentState.isAdmin ? (
+
+          <div className="text-center italic text-white opacity-80">
+              {currentState.poll?.votesPerVoter} Nominations Required to
+            Start!
+          </div> ): (
+            <div className="text-center italic text-white opacity-80">
+            Waiting for Admin,{' '}
+            <span className="font-semibold">
+              {currentState.poll?.participants[currentState.poll?.adminID]}
+            </span>
+            , to start the voting.
+          </div>
+          )
+        }
+
+        <div className="flex justify-center items-center">
           {currentState.isAdmin ? (
-            <>
-              <div className="my-2 italic">
-                {currentState.poll?.votesPerVoter} Nominations Required to
-                Start!
-              </div>
-              <button
-                className="box btn-orange my-2"
-                disabled={!currentState.canStartVote}
-                onClick={() => actions.startVote()}
-              >
-                Start Voting
-              </button>
-            </>
-          ) : (
-            <div className="my-2 italic">
-              Waiting for Admin,{' '}
-              <span className="font-semibold">
-                {currentState.poll?.participants[currentState.poll?.adminID]}
-              </span>
-              , to start the voting.
-            </div>
-          )}
-          <button
-            className="box btn-purple my-2"
-            onClick={() => setShowConfirmation(true)}
-          >
-            Leave Poll
-          </button>
+            <button
+              className="rounded-[20px] border border-[#ffffff2b] px-[15px] py-[7px] text-[#9d8bfb] bg-[#ffffff13] hover:bg-[#ffffff2b] trasition-all duration-300 font-bold w-[130px] mr-[15px] mb-[15px]"
+              disabled={!currentState.canStartVote}
+              onClick={() => actions.startVote()}
+            >
+              Start Voting
+            </button>
+          ) : (null)}
+            <button
+              className="rounded-[20px] border border-[#ffffff2b] px-[15px] py-[7px] text-[#9d8bfb] bg-[#ffffff13] hover:bg-[#ffffff2b] trasition-all duration-300 font-bold w-[130px] mr-[15px] mb-[15px]"
+              onClick={() => setShowConfirmation(true)}
+            >
+              Leave Poll
+            </button>
+
+
           <ConfirmationDialog
             message="You'll be kicked out of the poll"
             showDialog={showConfirmation}
@@ -137,6 +150,6 @@ export const WaitingRoom: React.FC = () => {
         onConfirm={() => submitRemoveParticipant()}
         onCancel={() => setIsConfirmationOpen(false)}
       />
-    </>
+    </div>
   );
 };

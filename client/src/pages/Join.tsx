@@ -49,29 +49,29 @@ const Join: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col w-full justify-around items-stretch h-full mx-auto max-w-sm">
+    <div className="flex flex-col justify-center items-stretch h-full mx-auto w-full p-[20px] border border-[#9d8bfb] rounded-[50px]">
       <div className="mb-12">
         <div className="my-4">
-          <h3 className="text-center">
+          <h3 className="text-center font-bold text-white opacity-80 mb-[15px]">
             Enter Code Provided by &quot;Friend&quot;
           </h3>
           <div className="text-center w-full">
             <input
               maxLength={6}
               onChange={(e) => setPollID(e.target.value.toUpperCase())}
-              className="box info w-full"
+              className="outline-none px-[12px] py-[7px] w-[300px] rounded-[5px] border-none bg-[#ffffff13] text-[#ffffffb2] mb-[10px]"
               autoCapitalize="characters"
               style={{ textTransform: 'uppercase' }}
             />
           </div>
         </div>
         <div className="my-4">
-          <h3 className="text-center">Your Name</h3>
+          <h3 className="text-center font-bold text-white opacity-80 mb-[15px]">Your Name</h3>
           <div className="text-center w-full">
             <input
               maxLength={25}
               onChange={(e) => setName(e.target.value)}
-              className="box info w-full"
+              className="outline-none px-[12px] py-[7px] w-[300px] rounded-[5px] border-none bg-[#ffffff13] text-[#ffffffb2] mb-[10px]"
             />
           </div>
         </div>
@@ -79,16 +79,16 @@ const Join: React.FC = () => {
           <p className="text-center text-red-600 font-light mt-8">{apiError}</p>
         )}
       </div>
-      <div className="my-12 flex flex-col justify-center items-center">
+      <div className="my-12 flex justify-center items-center">
         <button
           disabled={!areFieldsValid()}
-          className="box btn-orange w-32 my-2"
+          className="rounded-[20px] border border-[#ffffff2b] px-[15px] py-[7px] text-[#9d8bfb] bg-[#ffffff13] hover:bg-[#ffffff2b] trasition-all duration-300 font-bold w-[130px] mr-[15px]"
           onClick={handleJoinPoll}
         >
           Join
         </button>
         <button
-          className="box btn-purple w-32 my-2"
+          className="rounded-[20px] border border-[#ffffff2b] px-[15px] py-[7px] text-[#9d8bfb] bg-[#ffffff13] hover:bg-[#ffffff2b] trasition-all duration-300 font-bold w-[130px] mr-[15px]"
           onClick={() => actions.startOver()}
         >
           Start Over

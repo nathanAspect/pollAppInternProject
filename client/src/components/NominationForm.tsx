@@ -32,36 +32,36 @@ const NominationForm: React.FC<NominationFormProps> = ({
   const getBoxStyle = (id: string): string => {
     return id === userID
       ? 'bg-orange-100 flex-row'
-      : 'bg-gray-100 flex-row-reverse';
+      : 'bg-[#ffffff13] flex-row';
   };
 
   return (
     <BottomSheet isOpen={isOpen} onClose={onClose}>
-      <div className="flex flex-col px-4 items-center mb-2">
-        <h3 className="font-semibold">{title}</h3>
+      <div className="flex flex-col px-[40px] items-center mb-2 bg-[#0B1215] border border-[#ffffff2b] rounded-[20px] h-full">
+        <h3 className="font-bold mt-[30px] text-white opacity-80 mb-[15px]">{title}</h3>
         <div className="w-full my-4">
           <textarea
-            rows={2}
+            rows={1}
             maxLength={100}
-            className="box info w-full"
+            className="outline-none px-[12px] py-[10px] w-full rounded-[5px] border-none bg-[#ffffff13] text-[#ffffffb2] mb-[10px] text-[17px]"
             value={nominationText}
             onChange={(e) => setNominationText(e.currentTarget.value)}
+            placeholder='Put your nomination'
           />
         </div>
         <button
-          className="box btn-purple"
+          className="rounded-[20px] border border-[#ffffff2b] px-[15px] py-[7px] text-[#9d8bfb] bg-[#ffffff13] hover:bg-[#ffffff2b] trasition-all duration-300 font-bold w-[130px] mr-[15px] mb-[30px]"
           disabled={!nominationText.length || nominationText.length > 100}
           onClick={() => handleSubmitNomination(nominationText)}
         >
           Nominate
         </button>
 
-        <h2 className="text-center text-xl my-4 font-medium">Nominations</h2>
         <div className="w-full mb-2">
           {Object.entries(nominations).map(([nominationID, nomination]) => (
             <div
               key={nominationID}
-              className={`my-2 flex justify-between items-center p-2 rounded-md ${getBoxStyle(
+              className={`my-2 flex justify-between items-center px-[12px] py-[10px] w-full rounded-[5px] border-none  text-[#ffffffb2] mb-[10px] text-[17px] ${getBoxStyle(
                 nomination.userID
               )}`}
             >

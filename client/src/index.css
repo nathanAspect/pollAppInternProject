@@ -15,6 +15,11 @@
 @tailwind components;
 @tailwind utilities;
 
+::-webkit-scrollbar {
+  width: 0px; /* Hides vertical scrollbar */
+  height: 0px; /* Hides horizontal scrollbar */
+}
+
 body {
   @apply text-gray-700 text-opacity-90 overflow-y-hidden;
 }

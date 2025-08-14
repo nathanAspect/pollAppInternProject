@@ -59,33 +59,37 @@ const Create: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col w-full justify-around items-stretch h-full mx-auto max-w-sm">
+
+    <div className="flex flex-col justify-center items-stretch h-full mx-auto w-full p-[20px] border border-[#9d8bfb] rounded-[50px]">
+      
       <div className="mb-12">
-        <h3 className="text-center">Enter Poll Topic</h3>
-        <div className="text-center w-full">
+        <h3 className="text-center font-bold text-white opacity-80 mb-[15px]">Topic</h3>
+        <div className="text-center w-full ">
           <input
             maxLength={100}
             onChange={(e) => setPollTopic(e.target.value)}
-            className="box info w-full"
+            className="outline-none px-[12px] py-[7px] w-[300px] rounded-[5px] border-none bg-[#ffffff13] text-[#ffffffb2] mb-[10px]"
+            placeholder='Where should we eat today?'
           />
         </div>
-        <h3 className="text-center mt-4 mb-2">Votes Per Participant</h3>
+        <h3 className="text-center font-bold text-white opacity-80 mt-[20px] mb-[15px]">Votes Per Participant</h3>
         <div className="w-48 mx-auto my-4">
           <CountSelector
             min={1}
             max={5}
             initial={3}
-            step={1}
+            step={1}  
             onChange={(val) => setMaxVotes(val)}
           />
         </div>
-        <div className="mb-12">
-          <h3 className="text-center">Enter Name</h3>
+        <div className="mb-[10px]">
+          <h3 className="text-center font-bold text-white opacity-80 mb-[15px]">Enter Name</h3>
           <div className="text-center w-full">
             <input
               maxLength={25}
               onChange={(e) => setName(e.target.value)}
-              className="box info w-full"
+              className="outline-none px-[12px] py-[7px] w-[300px] rounded-[5px] border-none bg-[#ffffff13] text-[#ffffffb2]"
+              placeholder='Jhon'
             />
           </div>
         </div>
@@ -93,16 +97,16 @@ const Create: React.FC = () => {
           <p className="text-center text-red-600 font-light mt-8">{apiError}</p>
         )}
       </div>
-      <div className="flex flex-col justify-center items-center">
+      <div className="flex justify-center items-center">
         <button
-          className="box btn-orange w-32 my-2"
+          className="rounded-[20px] border border-[#ffffff2b] px-[15px] py-[7px] text-[#9d8bfb] bg-[#ffffff13] hover:bg-[#ffffff2b] trasition-all duration-300 font-bold w-[130px] mr-[15px]"
           onClick={handleCreatePoll}
           disabled={!areFieldsValid()}
         >
           Create
         </button>
         <button
-          className="box btn-purple w-32 my-2"
+          className="rounded-[20px] border border-[#ffffff2b] px-[15px] py-[7px] text-[#9d8bfb] bg-[#ffffff13] hover:bg-[#ffffff2b] trasition-all duration-300 font-bold w-[130px] mr-[15px]"
           onClick={() => actions.startOver()}
         >
           Start Over
@@ -110,6 +114,7 @@ const Create: React.FC = () => {
       </div>
     </div>
   );
+
 };
 
 export default Create;
