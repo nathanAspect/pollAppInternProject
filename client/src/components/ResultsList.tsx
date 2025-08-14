@@ -12,7 +12,6 @@ const ResultsList: React.FC<ResultsList> = ({ results }) => {
     <div className="mx-auto max-h-full flex flex-col">
       <HorizontalSwipeList>
         {results.map((result, i) => (
-          // Can use index as we'll never change list
           <ResultCard key={i} result={result} />
         ))}
       </HorizontalSwipeList>

@@ -22,7 +22,6 @@ export class ControllerAuthGuard implements CanActivate {
 
     try {
       const payload = this.jwtService.verify(accessToken);
-      // append user and poll to socket
       request.userID = payload.sub;
       request.pollID = payload.pollID;
       request.name = payload.name;
