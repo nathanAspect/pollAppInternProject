@@ -5,7 +5,8 @@
     "rootDir": "./src",
     "declaration": false,
     "sourceMap": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "strict": false,
   },
   "exclude": ["node_modules", "test", "dist", "**/*spec.ts"]
 }
