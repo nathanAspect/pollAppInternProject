@@ -19,13 +19,13 @@ const ParticipantList: React.FC<ParticipantListProps> = ({
   isAdmin,
 }) => (
   <BottomSheet isOpen={isOpen} onClose={onClose}>
-    <div className="px-8 flex flex-wrap justify-center mb-2">
+    <div className="px-8 flex flex-wrap justify-center mb-2 bg-[#0B1215] border border-[#ffffff2b] rounded-[20px] h-full">
       {Object.entries(participants).map(([id, participant]) => (
         <div
           key={id}
-          className="mx-1 my-1 p-4 shadow-xl bg-white flex justify-between items-center rounded-md"
+          className="bg-[#0B1215] rounded-[20px] border border-[#ffffff2b] mx-1 my-[20px] px-[7px] shadow-xl flex justify-center items-center rounded-md min-w-[100px] h-[40px]"
         >
-          <span className="ml-2 mr-1 text-indigo-700 text-xl text-center">
+          <span className="ml-2 mr-1 text-white opacity-80 text-xl text-center">
             {participant}
           </span>
           {isAdmin && userID !== id && (
@@ -34,7 +34,7 @@ const ParticipantList: React.FC<ParticipantListProps> = ({
               onClick={() => onRemoveParticipant(id)}
             >
               <MdClose
-                className="fill-current text-black align-middle"
+                className="fill-current text-white opacity-80 align-middle"
                 size={18}
               />
             </span>

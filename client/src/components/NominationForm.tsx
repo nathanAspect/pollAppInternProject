@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { MdCancel } from 'react-icons/md';
-import { Nominations } from '../pollState';
 import BottomSheet, { BottemSheetProps } from './ui/BottomSheet';
+
+type Nomination = { userID: string; text: string };
+type Nominations = Record<string, Nomination>;
 
 type NominationFormProps = {
   title?: string;

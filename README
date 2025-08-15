@@ -1,0 +1,59 @@
+# RankR – Real-Time Poll App
+
+RankR is a real-time ranked-choice poll application built with a modern tech stack. Users can create polls, vote on nominations, and see results instantly. This project combines a React frontend, Node.js backend, and PostgreSQL database, all containerized with Docker for easy deployment.
+
+---
+
+## 🎨 Figma Design
+
+You can view the complete UI/UX design in Figma:  
+[**RankR Figma Design**](https://www.figma.com/file/your-design-link)  
+*(Replace with your actual Figma URL.)*
+
+---
+
+## 🛠 Tech Stack
+
+- **Frontend:** React (with Vite), tailwindcss  
+- **Backend:** Node.js, Nest.js  
+- **Database:** PostgreSQL  
+- **ORM:** Prisma  
+- **Containerization:** Docker & Docker Compose
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+
+git clone https://github.com/nathanAspect/pollAppInternProject
+cd rankr-poll-app
+
+### 2. Creat .env file
+**create a .env file in the server folder:**
+
+PORT=3000
+CLIENT_PORT=8080
+POLL_DURATION=7200
+JWT_SECRET=thedevilisinthedetails13
+DATABASE_URL="postgresql://intern:postgrespassword@localhost:5432/polldb?schema=public"
+
+**create a .env file in the client folder**
+
+VITE_API_HOST=localhost
+VITE_API_PORT=3000
+VITE_POLLS_NAMESPACE=polls
+
+
+### 3. Build and Compose
+```bash
+docker compose up --build
+```
+
+The backend server will automatically run Prisma migrations.
+
+The database will initialize with the required tables.
+
+Frontend will be available at http://localhost:8080.
+
+Backend API will be available at http://localhost:3000.

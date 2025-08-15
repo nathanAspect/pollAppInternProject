@@ -1,0 +1,43 @@
+version: "3.9"
+
+services:
+  # Frontend React + Vite
+  client:
+    build: ./client
+    container_name: poll-client
+    ports:
+      - "8080:8080"   # Frontend served on host port 8080
+    depends_on:
+      - server
+    restart: unless-stopped
+
+  # Backend Node.js
+  server:
+    build: ./server
+    container_name: poll-server
+    ports:
+      - "3000:3000"   # API served on host port 3000
+    environment:
+      DATABASE_URL: postgresql://intern:postgrespassword@db:5432/polldb?schema=public
+      PORT: 3000
+    depends_on:
+      - db
+    command: sh -c "npx prisma migrate deploy && node dist/main"
+    restart: unless-stopped
+
+  # PostgreSQL Database
+  db:
+    image: postgres:17
+    container_name: poll-db
+    environment:
+      POSTGRES_USER: intern
+      POSTGRES_PASSWORD: postgrespassword
+      POSTGRES_DB: polldb
+    ports:
+      - "5432:5432"   # Optional: expose DB locally
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  postgres-data:
